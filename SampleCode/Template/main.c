@@ -404,6 +404,7 @@ void PDMA_SCATTER_IRQHandler(void)
         PDMA_SetTimeOut(PDMA, UART1_RX_DMA_CH, DISABLE, 0);
         PDMA_CLR_TMOUT_FLAG(PDMA, UART1_RX_DMA_CH);
         PDMA_SetTimeOut(PDMA, UART1_RX_DMA_CH, ENABLE, PDMA_TIME);
+        sRxCount++; 
     }
     #endif
     #if defined (ENABLE_UART2)     
@@ -680,7 +681,7 @@ void PDMA_TIMEOUT_IRQHandler(void)
         PDMA_CLR_TMOUT_FLAG(PDMA, UART1_RX_DMA_CH);
         PDMA_SetTimeOut(PDMA, UART1_RX_DMA_CH, ENABLE, PDMA_TIME);    
         set_flag(flag_UART1_RX_end,ENABLE);
-               
+        sRxCount++;       
     }
     #endif
     #if defined (ENABLE_UART2)     
